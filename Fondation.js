@@ -18,6 +18,7 @@ var previousDélaisséName = {
     'délaisséMenu1': '',
     'délaisséMenu2': '',
 }
+var peuplePrécédent = ''
 
 var valeurPrécédente2 = {}
 let currentStar = 0
@@ -242,7 +243,7 @@ const peupleData = {
         { cultureskill: "Cadeau de l'Arbre", cost: 5, Description: "Vous êtes Proficient et débutez avec une pièce d'équipement Verdoyant." },
         { cultureskill: "Murmures de la brise", cost: 2, Description: "En observant le ciel pour 1 minute, vous pouvez prévoir la météo des 24 prochaines heures. Vous ne pouvez pas percevoir des changements magiques, mais vous aurez l'opportunité de faire un Ability Check pour les constater." },
         { cultureskill: "Compagnon", cost: 2, Description: "Vous avez un animal de compagnie. Voir Narrateur pour les détails." },
-        { cultureskill: "Pouce-Vert", cost: 2, Description: "Vous pouvez faire pousser et créer de l'équipement Verdoyant." },
+        { cultureskill: "Pouce-Vert", cost: 4, Description: "Vous pouvez faire pousser et créer de l'équipement Verdoyant." },
     ],
     Cloison: [
         { cultureskill: "Swim*", cost: 2, Description: "Vous débutez avec deux Skill Points dans Swim." },
@@ -1251,10 +1252,21 @@ function délaisséHumainDémulticlass(atout, délaisséScrolldownMenu){
         if (selectedPeuple == 'Délaissé'){
             espèceOriginale(document.getElementById('espèceOriginaleMenu'))
             document.getElementById('espèceOriginaleMenu').style.display = 'block'
-        }
-        else{
+        }else{
             document.getElementById('espèceOriginaleMenu').style.display = 'none'
         }
+
+        if (selectedPeuple == 'Humain'){
+            pointsContainer.value = parseInt(pointsContainer.value, 10) + 5
+
+        }
+        if (peuplePrécédent == 'Humain'){
+            pointsContainer.value = parseInt(pointsContainer.value, 10) - 5           
+        }
+        peuplePrécédent = selectedPeuple
+
+
+
         // Loop through the NodeList of checked checkboxes
         checkedCheckboxes.forEach(checkbox => {
             if (checkbox.checked){

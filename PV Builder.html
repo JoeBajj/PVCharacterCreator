@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            position: relative;
+            background-color: black;
+            color: white;
+        }
+        
+        #cultureskills-container {
+        position: fixed;
+        outline: 1px solid red;
+        top: 300px;  /* Adjust as needed */
+        left: 275px;  /* Adjust as needed */ 
+        }
+        #culture-container {
+        position: fixed;
+        outline: 1px solid red;
+        top: 265px;  /* Adjust as needed */
+        left: 275px;  /* Adjust as needed */
+        }
+        #peuple-container {
+        position: fixed;
+        outline: 1px solid red;
+        top: 265px;  /* Adjust as needed */
+        left: 0px;  /* Adjust as needed */     
+        }
+        #peupleskills-container {
+        position: fixed;
+        outline: 1px solid red;
+        top: 300px;  /* Adjust as needed */
+        left: 0px;  /* Adjust as needed */     
+        }
+        
+        #Points-de-fondation-container{
+        position: fixed;
+        top: 175px;  /* Adjust as needed */
+        left: 350px;  /* Adjust as needed */   
+        outline: 1px solid red;
+        font-size:26 ;
+        }
+        #Points-de-fondation-container input {
+        font-size: 30px;
+        width: 40px
+        }
+        #historiqueskills-container{
+        position: fixed;   
+        outline: 1px solid red;
+        top: 300px;  /* Adjust as needed */
+        left: 510px;  /* Adjust as needed */  
+        }
+        #historique-container{
+        position: fixed;
+        outline: 1px solid red;
+        top: 265px;  /* Adjust as needed */
+        left: 510px;  /* Adjust as needed */     
+        }
+        #dédicace-form{
+            position: fixed;
+            outline: 1px solid red;
+            top: 265px;  /* Adjust as needed */
+            left: 675px;  /* Adjust as needed */      
+        }
+        #character-form{
+            position: fixed;
+            outline: 1px solid red;
+            top: 50px;  /* Adjust as needed */
+            left: 0px;  /* Adjust as needed */   
+            }
+        #scrollingMenuCulture1{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 445px;  /* Adjust as needed */
+            left: 275px;  /* Adjust as needed */   
+        }
+        #scrollingMenuCulture2{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 465px;  /* Adjust as needed */
+            left: 275px;  /* Adjust as needed */   
+        }
+        #scrollingMenuCulture3{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 485px;  /* Adjust as needed */
+            left: 275px;  /* Adjust as needed */   
+        }
+        #scrollingMenuCulture4{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 505px;  /* Adjust as needed */
+            left: 275px;  /* Adjust as needed */   
+        }
+        #scrollingMenuCulture5{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 525px;  /* Adjust as needed */
+            left: 275px;  /* Adjust as needed */   
+        }
+        #cultureSelectionScrollingMenu1{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 445px;  /* Adjust as needed */
+            left: 395px;  /* Adjust as needed */   
+        }
+        #cultureSelectionScrollingMenu2{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 465px;  /* Adjust as needed */
+            left: 395px;  /* Adjust as needed */   
+        }
+        #cultureSelectionScrollingMenu3{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 485px;  /* Adjust as needed */
+            left: 395px;  /* Adjust as needed */   
+        }
+        #cultureSelectionScrollingMenu4{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 505px;  /* Adjust as needed */
+            left: 395px;  /* Adjust as needed */   
+        }
+        #cultureSelectionScrollingMenu5{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 525px;  /* Adjust as needed */
+            left: 395px;  /* Adjust as needed */   
+        }
+        #historiqueAdditionnel1{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 370px;  /* Adjust as needed */
+            left: 510px;  /* Adjust as needed */   
+        }
+        #historiqueAdditionnel2{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 390px;  /* Adjust as needed */
+            left: 510px;  /* Adjust as needed */   
+        }
+        #délaisséMenu1{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 530px;  /* Adjust as needed */
+            left: 0px;  /* Adjust as needed */   
+        }
+        #délaisséMenu2{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 550px;  /* Adjust as needed */
+            left: 0px;  /* Adjust as needed */   
+        }
+        #espèceOriginaleMenu{
+            position:   fixed;  
+            outline: 1px solid red;
+            top: 505px;  /* Adjust as needed */
+            left: 0px;  /* Adjust as needed */   
+        }
+
+
+        #customTooltip {
+    display: none;
+    position: absolute;
+    background-color: rgb(15, 9, 61);
+    border: 1px solid black;
+    padding: 5px;
+    z-index: 1000;
+    /* Add more styling as needed */
+}
+
+       /* Your CSS rules here */
+       /* Style the attribute containers */
+
+
+.peupleskill-title:hover + .tooltip,
+.peupleskill input[type="checkbox"]:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+.cultureskill-title:hover + .tooltip,
+.cultureskill input[type="checkbox"]:hover ~ .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+.cultureskill input[type="checkbox"]:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Style the bonus text */
+.bonus {
+    margin-left: 20px;
+    font-weight: bold;
+}
+    </style>
+
+</head>
+
+<body>
+    <!-- BUTTONS/INPUT -->
+    <button id="new-character-button">New Character</button>
+    <button id="load-character-button">Load Character</button>
+    <button id="save-character-button">Save Character</button>
+    <label for="character-name">Character Name:</label>
+    <input type="text" id="character-name" name="character-name" required>
+    <!-- ATTRIBUTES TABLE -->
+    <form id="character-form">
+        <table>
+            <tr>
+                <td>Strength:</td>
+                <td><input type="number" id="strength" name="strength" min="6" max="24" required></td>
+                <td><span id="strength-bonus">+0</span></td>
+            </tr>
+            <tr>
+                <td>Dexterity:</td>
+                <td><input type="number" id="dexterity" name="dexterity" min="6" max="24" required></td>
+                <td><span id="dexterity-bonus">+0</span></td>
+            </tr>
+            <tr>
+                <td>Constitution:</td>
+                <td><input type="number" id="constitution" name="constitution" min="6" max="24" required></td>
+                <td><span id="constitution-bonus">+0</span></td>
+            </tr>
+            <tr>
+                <td>Intelligence:</td>
+                <td><input type="number" id="intelligence" name="intelligence" min="6" max="24" required></td>
+                <td><span id="intelligence-bonus">+0</span></td>
+            </tr>
+            <tr>
+                <td>Wisdom:</td>
+                <td><input type="number" id="wisdom" name="wisdom" min="6" max="24" required></td>
+                <td><span id="wisdom-bonus">+0</span></td>
+            </tr>
+            <tr>
+                <td>Charisma:</td>
+                <td><input type="number" id="charisma" name="charisma" min="6" max="24" required></td>
+                <td><span id="charisma-bonus">+0</span></td>
+            </tr>
+        </table>
+    </form>
+
+    <form id="dédicace-form">
+        <table>
+            <tr>
+                <td>Choisi (6):</td>
+                <td><input type="checkbox" id="Choisi" name="Choisi"value= 6 data-key="Choisi">  </td>
+            </tr>
+            <tr>
+                <td>Connecté (5):</td>
+                <td><input type="checkbox" id="Connecté" name="Connecté"value= 5 data-key="Connecté"></td>
+            </tr>
+            <tr>
+                <td>Prévoyant (5):</td>
+                <td><input type="checkbox" id="Prévoyant" name="Prévoyant"value= 5 data-key="Prévoyant"></td>
+            </tr>
+            <tr>
+                <td>Ritualiste (6):</td>
+                <td><input type="checkbox" id="Ritualiste" name="Ritualiste"value= 6 data-key="Ritualiste"></td>
+            </tr>
+        </table>
+    </form>
+
+
+
+ <!-- PEUPLES -->
+ <div id="peuple-container">
+ <label for="Peuple">Peuple:</label>
+ <select id="Peuple" name="Peuple">
+    <option value="Canevas">Canevas</option>
+    <option value="Délaissé">Délaissé</option>
+    <option value="Drakéide">Drakéide</option>
+    <option value="Elfe">Elfe</option>
+    <option value="Genasi">Genasi</option>
+    <option value="Homoncule">Homoncule</option>
+    <option value="Humain">Humain</option>
+    <option value="Jord">Jord</option>
+    <option value="Maimon">Maimon</option>
+    <option value="Moloch">Moloch</option>
+    <option value="Oni">Oni</option>
+    <option value="Skaven">Skaven</option>
+    <option value="Talin">Talin</option>
+    <option value="TenguJour">Tengu de Jour</option>
+    <option value="TenguNuit">Tengu de Nuit</option>
+    <option value="Triton">Triton</option>
+     <!-- Add more peuples here -->
+ </select>
+</div>
+
+  <!-- CULTURES -->
+    <div id="culture-container">
+    <label for="Culture">Culture:</label>
+    <select id="Culture"name="Culture"> 
+        <option value="Ashvattha">Ashvattha</option>
+        <option value="Cloison">Cloison</option>
+        <option value="Coron">Coron</option>
+        <option value="GrisGallons">Gris-Gallons</option>
+        <option value="LePlateau">Le Plateau</option>
+        <option value="LeCendrier">Le Cendrier</option>
+        <option value="Phénandre">Phénandre</option>
+        <option value="ProjetFrontière">Projet Frontière</option>
+        <option value="TroisPointes">Trois-Pointes</option>
+        <option value="ValléedYlère">Vallée d'Ylère</option>
+        <!-- Add other cultures here -->
+    </select>
+</div>
+  <!-- HISTORIQUES -->
+  <div id="historique-container">
+    <label for="Historique">Historique:</label>
+    <select id="Historique"name="Historique"> 
+        <option value="Criminel">Criminel</option>
+        <option value="Érudit">Érudit</option>
+        <option value="Marchand">Marchand</option>
+        <option value="Mystico">Mystico</option>
+        <option value="Religieux">Religieux</option>
+        <option value="Robuste">Robuste</option>
+        <option value="Travailleur">Travailleur</option>
+        <option value="Vagabond">Vagabond</option>
+        <!-- Add other historiques here -->
+    </select>
+</div>
+
+
+<!--HUMAIN SCROLLING MENUS-->
+<select id="scrollingMenuCulture1" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="scrollingMenuCulture2" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="scrollingMenuCulture3" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="scrollingMenuCulture4" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="scrollingMenuCulture5" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="cultureSelectionScrollingMenu1" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="cultureSelectionScrollingMenu2" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="cultureSelectionScrollingMenu3" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="cultureSelectionScrollingMenu4" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="cultureSelectionScrollingMenu5" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="historiqueAdditionnel1" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="historiqueAdditionnel2" style="display: none; height: 20px; overflow-y: scroll;"></select>
+
+<!--DÉLAISSÉ SCROLLING MENUS-->
+<select id="espèceOriginaleMenu" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="délaisséMenu1" style="display: none; height: 20px; overflow-y: scroll;"></select>
+<select id="délaisséMenu2" style="display: none; height: 20px; overflow-y: scroll;"></select>
+
+
+<div id="cultureskills-container"></div>
+<div id="peupleskills-container"></div>
+<div id="historiqueskills-container"></div>
+<div id="attributes-container"></div>
+<div id="customTooltip"></div>
+
+
+<div id="Points-de-fondation-container">
+    <label for="Points-de-Fondation">Points de Fondation:</label>
+    <input type="text" id="Points-de-Fondation" value="25" readonly>
+</div>
+
+    <script src="PV Builder.js"></script>
+    <script src="Loading.js"></script>
+    <script src="Fondation.js"></script>
+</body>
+</html>
